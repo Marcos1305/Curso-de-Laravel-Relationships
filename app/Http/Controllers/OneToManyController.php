@@ -10,9 +10,9 @@ class OneToManyController extends Controller
 
     public function oneToMany()
     {
-        $country = Country::where('name', 'Brasil')->get()->first();
+        $country = Country::where('name', 'Brasil')->with('states')->get()->first();
         echo $country->name . '<hr>';
-        $states = $country->states()->where('name', 'Like', '%a ')->get();
+        $states = $country->states;
         echo '<table>
             <thead>
                 <th>Nome</th>
