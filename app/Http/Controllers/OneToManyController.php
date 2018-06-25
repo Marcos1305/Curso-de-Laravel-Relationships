@@ -12,7 +12,7 @@ class OneToManyController extends Controller
     {
         $country = Country::where('name', 'Brasil')->get()->first();
         echo $country->name . '<hr>';
-        $states = $country->states()->where('name', 'Like', '%a')->get();
+        $states = $country->states()->where('name', 'Like', '%a ')->get();
         echo '<table>
             <thead>
                 <th>Nome</th>
@@ -29,5 +29,11 @@ class OneToManyController extends Controller
         }
         echo '</tbody>';
         echo '</table>';
+    }
+    public function manyToOne()
+    {
+        $stateName = 'São Paulo';
+        $state =  State::where('name', "{$stateName}")->get()->first();
+        echo $state->country->name;
     }
 }
