@@ -8,7 +8,6 @@ use App\Model\Location;
 class Country extends Model
 {
     protected $fillable = ['name'];
-
     public function location()
     {
         return $this->hasOne(Location::class); //Caso Tennha seguido todos os padrões do Laravel
