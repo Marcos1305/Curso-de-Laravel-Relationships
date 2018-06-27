@@ -25,4 +25,14 @@ class PolymorphicController extends Controller
 
         var_dump($comment);
     }
+    public function polymorphicList()
+    {
+        $city = City::where('name', 'Vilhena')->get()->first();
+        echo $city->name.'<hr>';
+
+        $comments = $city->comments()->get();
+        foreach($comments as $comment){
+            echo $comment->description;
+        }
+    }
 }
